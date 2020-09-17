@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+  {% block content %}
+<div class="container">
+    <h2 class="text-center">WORLD</h2>
+    <div class="text-center"> <img className="rounded text-center" src="https://cdn.totalcomputersusa.com/butyoudontlooksick.com/uploads/2010/05/world-globe.jpg" alt="india" style="height:65px;
+    width:65px; marginLeft:10px;" data-holder-rendered="true"></img></div>
+
+
+    <div class="row">
+                    <div class="col-md-3">
+                        <div class="badge bg-info" style="width: 15rem; border-radius:10px;">
+                           <div class="card-body">
+                        <h5 class="card-title text-center">TOTAL CASES</h5>
+                                       <p><h3>{{total_cases}}</h3></p>
+                        <p class="card-text text-center"><kbd>Today:{{total_todayCases}}</kbd></p>
+        <!--                <a href="#" class="btn btn-primary text-center"></a>-->
+                        </div>
+                     </div>
+                    </div>
+                     <div class="col-md-3">
+                        <div class="badge bg-warning" style="width: 15rem; border-radius:10px;">
+                           <div class="card-body">
+                        <h5 class="card-title text-center">ACTIVE CASES</h5>
+                                       <p><h3>{{total_active_cases}}</h3></p>
+                        <p class="card-text text-center text-warning">S</p>
+        <!--                <a href="#" class="btn btn-primary text-center"></a>-->
+                        </div>
+                    </div>
+                </div>
+         <div class="col-md-3">
+                        <div class="badge bg-success" style="width: 15rem; border-radius:10px;">
+                           <div class="card-body">
+                        <h5 class="card-title text-center">RECOVERED</h5>
+                                       <p><h3>{{total_recovered}}</h3></p>
+                        <p class="card-text text-center"><kbd>Today:{{total_todayRecovered}}</kbd></p>
+        <!--                <a href="#" class="btn btn-primary text-center"></a>-->
+                        </div>
+                    </div>
+                </div>
+
+        <div class="col-md-3">
+                        <div class="badge bg-danger" style="width: 15rem; border-radius:10px;">
+                           <div class="card-body">
+                        <h5 class="card-title text-center">DEATHS</h5>
+                                       <p><h3>{{total_deaths}}</h3></p>
+                        <p class="card-text text-center"><kbd>Today:{{total_todayDeaths}}</kbd></p>
+        <!--                <a href="#" class="btn btn-primary text-center"></a>-->
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+     </div>
+
+    <div class="row mt-2">
+        <div class="col-12">
+            <table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">SI.NO</th>
+      <th scope="col">Country</th>
+      <th scope="col"></th>
+      <th scope="col">Total Cases</th>
+      <th scope="col">Recovered</th>
+      <th scope="col">Death</th>
+    </tr>
+  </thead>
+  <tbody>
+
+  {% for data in datas %}
+     <tr>
+            <th scope="row">{{forloop.counter}}</th>
+          <td>{{data.country}}</td>
+          <td><img src={{data.countryInfo.flag}} style="height:65px;width:65px; marginLeft:10px;" alt="world"></img> </td>
+            <td>{{data.cases}}</td>
+            <td>{{data.recovered}}</td>
+            <td>{{data.deaths}}</td>
+          </tr>
+  {%endfor%}
+
+  </tbody>
+</table>
+        </div>
+    </div>
+
+    </div>
+
+    {% endblock%}
